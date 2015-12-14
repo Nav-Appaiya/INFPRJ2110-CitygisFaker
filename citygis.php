@@ -5,6 +5,9 @@
  * User: nav
  * Date: 14-12-15
  * Time: 04:26
+ *
+ * php app/console genereer:events
+ * php app/console genereer:positions
  */
 require __DIR__.'/vendor/autoload.php';
 

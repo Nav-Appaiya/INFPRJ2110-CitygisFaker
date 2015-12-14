@@ -2,6 +2,7 @@
 
 namespace AppBundle\Controller;
 
+use Faker\Factory;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
@@ -15,6 +16,16 @@ class DefaultController extends Controller
      */
     public function indexAction(Request $request)
     {
+        dump($this->fake());
+
+
+
        return $this->render('AppBundle::layout.html.twig');
+    }
+
+    public function fake($fakeThis = 'name')
+    {
+        $faker = Factory::create();
+        return $faker->$fakeThis;
     }
 }
