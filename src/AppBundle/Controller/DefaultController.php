@@ -5,6 +5,7 @@ namespace AppBundle\Controller;
 use AppBundle\Entity\Users;
 use Faker\Factory;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Symfony\Bundle\FrameworkBundle\Client;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -18,11 +19,18 @@ class DefaultController extends Controller
      */
     public function indexAction(Request $request)
     {
-        dump($this->fake());
-        for ($x = 0; $x <= 10; $x++) {
-            $this->createUsers();
-        }
+        header('Content-Type: text/plain');
 
+        $client = new \GuzzleHttp\Client([
+            'base_uri' => 'http://149.210.236.249',
+            'defaults' => [
+                'headers' => [
+                    'Authorization' => 'Token 90f44a24a6bd93a8ca9c21d0b9e0d81d5ab20da2'
+                ]
+            ]
+        ]);
+        $request = $client->createRequest("GET",'http://149.210.236.249/positions' );
+        $request->setPort(8000);
 
         return $this->render('AppBundle::layout.html.twig');
     }

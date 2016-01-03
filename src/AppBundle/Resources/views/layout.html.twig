@@ -23,7 +23,6 @@
                 Welcome to the Citygis Faker Application. <br>
             </h1>
         </div>
-
         <div class="row">
             <br>
             <h2>149.210.236.249:8000</h2>
@@ -33,8 +32,12 @@
             <a href="{{ path('create', {'type':'position'}) }}" class="btn btn-success btn-outline">Positions</a>
             <a href="{{ path('create', {'type':'connection'}) }}" class="btn btn-warning btn-outline">Connections</a>
             <a href="{{ path('create', {'type':'event'}) }}" class="btn btn-danger btn-outline">Events</a>
-            <a href="{{ path('create', {'type':'all'}) }}" class="btn btn-info btn-outline">Create one of each</a>
+            <a href="{{ path('test') }}" class="btn btn-info btn-outline">Create one of each</a>
         </div>
+
+        <br>
+        <br>
+
     {% endblock %}
 </div>
 {% block javascripts %}{% endblock %}
