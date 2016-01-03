@@ -2,6 +2,7 @@
 
 namespace AppBundle\Controller;
 
+use AppBundle\Helper\CollectorComponentAPI;
 use Faker\Factory;
 use GuzzleHttp\Client;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
@@ -13,6 +14,21 @@ use Symfony\Component\HttpFoundation\Request;
  */
 class CreateController extends Controller
 {
+
+    public function testAction()
+    {
+        header('Content-Type: application/json');
+        $collector = new CollectorComponentAPI();
+        print_r($collector->createEvent());
+        print_r("============================== EVENT CREATED, NEXT CONNECTIONS \n");
+        print_r($collector->createConnection());
+        print_r("============================== CONNECTION CREATED, NEXT POSITIONS \n");
+        print_r($collector->createPosition());
+        print_r("============================== POSITIONS CREATED, NEXT MONITORING \n");
+        print_r($collector->createMonitoring());
+
+        die('==== done');
+    }
 
     /**
      * /create?type={events,monitoring,locations,locations}
@@ -55,8 +71,11 @@ class CreateController extends Controller
             default:
                 echo 'possible values for type = [event, connection, monitoring, location]';
         }
-        header('Content-Type: text/plain');
-        print_r($result);
+
+        $this->backButton();
+        echo '<pre>';
+        print_r($result->read(10));
+        print_r($result->getStatusCode());
         die('Done');
     }
 
@@ -99,7 +118,7 @@ class CreateController extends Controller
 
         $response = $client->post('http://149.210.236.249:8000/connections', [ 'body' => $connection ]);
 
-        return $response->getStatusCode();
+        return $response;
     }
 
     /**
@@ -166,6 +185,20 @@ class CreateController extends Controller
     private function getTypeForConnection()
     {
         return array('Gps/GpsAccuracyGyroBias', 'Hsdpa/SQual', 'SystemInfo/ManagedMemoryUsage', 'SystemInfo/AvailableDiskSpace', 'Gps/GpsGyroMean', 'Gps/GpsTemperature', 'Hsdpa/NumberOfConnects', 'Hsdpa/RSSI', 'Gps/NumberOfSatellitesTracked', 'Gps/Speed', 'SystemInfo/AvailableMemory', 'Gps/GpsAccuracyGyroScale', 'SystemInfo/MemoryLoad', 'Hsdpa/RSCP', 'Gps/GpsPulseScale', 'SystemInfo/ProcessorUsage', 'Hsdpa/SRxLev', 'Gps/GpsGyroBias', 'MessageStack/MessageCount');
+    }
+
+    private function backButton()
+    {
+        echo '
+        <button onclick="goBack()">Go Back</button>
+        <script>
+        function goBack() {
+            window.history.back();
+        }
+        </script>
+        <br />
+        <br />
+        ';
     }
 
 }

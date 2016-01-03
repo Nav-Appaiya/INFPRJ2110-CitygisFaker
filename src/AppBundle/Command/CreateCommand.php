@@ -16,8 +16,8 @@ class CreateCommand extends ContainerAwareCommand
     protected function configure()
     {
         $this
-            ->setName('app:create_command')
-            ->setDescription('Hello PhpStorm');
+            ->setName('citygis:fake')
+            ->setDescription('Fakes citygis data and pushes it to server 1 [149.210.236.249:8000] ');
     }
 
     /**

@@ -5,3 +5,7 @@ homepage:
 create:
     path:  /create
     defaults: { _controller: AppBundle:Create:index }
+
+test:
+    path:  /test
+    defaults: { _controller: AppBundle:Create:test }

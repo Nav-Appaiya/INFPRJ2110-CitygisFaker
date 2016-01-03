@@ -1,43 +1,42 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-        <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
-	{% javascripts '@AppBundle/Resources/public/js/*' %}
-    		<script src="{{ asset_url }}"></script>
-	{% endjavascripts %}
-	{% stylesheets 'bundles/app/css/*' filter='cssrewrite' %}
-    		<link rel="stylesheet" href="{{ asset_url }}" />
-	{% endstylesheets %}
-        <title>{% block title %}Welcome!{% endblock %}</title>
-        <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
-    </head>
-    <body>
-        <div class="container">
-            {% block body %}
-                <div class="row">
-                    <h1 class="">
-                        Welcome to the Citygis Faker Application. <br>
-                    </h1>
-                </div>
-
-                <div class="row">
-                    <br>
-                    <h2>149.210.236.249:8000</h2>
-                    <p>Push some data into server 1</p>
-                    <a class="btn btn-primary btn-outline">Events</a>
-                    <a class="btn btn-success btn-outline">Locations</a>
-                    <a class="btn btn-warning btn-outline">Monitoring</a>
-                    <a class="btn btn-danger btn-outline">Locations</a>
-                    <a class="btn btn-info btn-outline">Users</a>
-                    <a class="btn btn-default btn-outline">Groups</a>
-                </div>
-            {% endblock %}
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    {% javascripts '@AppBundle/Resources/public/js/*' %}
+    <script src="{{ asset_url }}"></script>
+    {% endjavascripts %}
+    {% stylesheets 'bundles/app/css/*' filter='cssrewrite' %}
+    <link rel="stylesheet" href="{{ asset_url }}" />
+    {% endstylesheets %}
+    <title>{% block title %}Welcome!{% endblock %}</title>
+    <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+</head>
+<body>
+<div class="container">
+    {% block body %}
+        <div class="row">
+            <h1 class="">
+                Welcome to the Citygis Faker Application. <br>
+            </h1>
         </div>
-        {% block javascripts %}{% endblock %}
-	{% block stylesheets  %}{% endblock %}
-    </body>
+
+        <div class="row">
+            <br>
+            <h2>149.210.236.249:8000</h2>
+            <p>Push some data into server 1</p>
+            <a href="create?type=monitoring" class="btn btn-primary btn-outline">Monitoring</a>
+            <a href="create?type=position" class="btn btn-success btn-outline">Positions</a>
+            <a href="create?type=connection" class="btn btn-warning btn-outline">Connections</a>
+            <a href="create?type=event" class="btn btn-danger btn-outline">Events</a>
+            <a href="create?type=all" class="btn btn-info btn-outline">Create one of each</a>
+        </div>
+    {% endblock %}
+</div>
+{% block javascripts %}{% endblock %}
+{% block stylesheets  %}{% endblock %}
+</body>
 </html>
