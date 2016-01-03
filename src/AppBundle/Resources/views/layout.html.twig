@@ -28,11 +28,12 @@
             <br>
             <h2>149.210.236.249:8000</h2>
             <p>Push some data into server 1</p>
-            <a href="create?type=monitoring" class="btn btn-primary btn-outline">Monitoring</a>
-            <a href="create?type=position" class="btn btn-success btn-outline">Positions</a>
-            <a href="create?type=connection" class="btn btn-warning btn-outline">Connections</a>
-            <a href="create?type=event" class="btn btn-danger btn-outline">Events</a>
-            <a href="create?type=all" class="btn btn-info btn-outline">Create one of each</a>
+
+            <a href="{{ path('create', {'type':'monitoring'}) }}" class="btn btn-primary btn-outline">Monitoring</a>
+            <a href="{{ path('create', {'type':'position'}) }}" class="btn btn-success btn-outline">Positions</a>
+            <a href="{{ path('create', {'type':'connection'}) }}" class="btn btn-warning btn-outline">Connections</a>
+            <a href="{{ path('create', {'type':'event'}) }}" class="btn btn-danger btn-outline">Events</a>
+            <a href="{{ path('create', {'type':'all'}) }}" class="btn btn-info btn-outline">Create one of each</a>
         </div>
     {% endblock %}
 </div>
