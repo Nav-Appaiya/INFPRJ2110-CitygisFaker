@@ -16,9 +16,27 @@
         <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
     </head>
     <body>
-        {% block body %}
-        <h1 class="text-center">This is base body tags, please override this.</h1>
-        {% endblock %}
+        <div class="container">
+            {% block body %}
+                <div class="row">
+                    <h1 class="">
+                        Welcome to the Citygis Faker Application. <br>
+                    </h1>
+                </div>
+
+                <div class="row">
+                    <br>
+                    <h2>149.210.236.249:8000</h2>
+                    <p>Push some data into server 1</p>
+                    <a class="btn btn-primary btn-outline">Events</a>
+                    <a class="btn btn-success btn-outline">Locations</a>
+                    <a class="btn btn-warning btn-outline">Monitoring</a>
+                    <a class="btn btn-danger btn-outline">Locations</a>
+                    <a class="btn btn-info btn-outline">Users</a>
+                    <a class="btn btn-default btn-outline">Groups</a>
+                </div>
+            {% endblock %}
+        </div>
         {% block javascripts %}{% endblock %}
 	{% block stylesheets  %}{% endblock %}
     </body>

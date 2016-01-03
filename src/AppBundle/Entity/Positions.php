@@ -45,7 +45,7 @@ class Positions
     /**
      * @var float
      *
-     * @ORM\Column(name="speed", type="float")
+     * @ORM\Column(name="speed", type="float", nullable=true)
      */
     private $speed;
 

@@ -3,6 +3,7 @@
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Faker\Factory;
 
 /**
  * Users
@@ -66,16 +67,45 @@ class Users
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="last_login", type="datetime")
+     * @ORM\Column(name="last_login", type="date", nullable=true )
      */
     private $lastLogin;
 
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="joined", type="datetime")
+     * @ORM\Column(name="joined", type="date", nullable=true )
      */
     private $joined;
+
+    /**
+     * Users constructor.
+     * @param int $id
+     * @param string $url
+     * @param string $email
+     * @param string $authToken
+     * @param string $firstName
+     * @param string $lastName
+     * @param bool $isStaff
+     * @param \DateTime $lastLogin
+     * @param \DateTime $joined
+     */
+    public function __construct($name = 'John')
+    {
+        $faker = Factory::create();
+        if($name === 'John'){
+            $name = $faker->firstName;
+        }
+        $this->id = $faker->uuid;
+        $this->url = $faker->url;
+        $this->email = $faker->email;
+        $this->authToken = $faker->sha1;
+        $this->firstName = $name;
+        $this->lastName = $faker->lastName;
+        $this->isStaff = $faker->boolean(20);
+        $this->lastLogin = $faker->dateTimeThisMonth;
+        $this->joined = $faker->dateTimeAD;
+    }
 
 
     /**

@@ -34,6 +34,7 @@ class MonitoringCommand  extends ContainerAwareCommand
     protected function execute(InputInterface $input, OutputInterface $output)
     {
         $aantal = $input->getArgument('aantal');
+        $return = '';
         if(!$aantal){
             $aantal = 30;
         }
@@ -53,15 +54,9 @@ class MonitoringCommand  extends ContainerAwareCommand
             $monitoring->setMin($faker->randomNumber());
             $monitoring->setMax($faker->randomNumber());
             $monitoring->setSum($faker->randomNumber());
-            $formattedLine = $this->getHelper('formatter')->formatSection(
-                $monitoring->getId(),
-                'Created unitId: #'.$monitoring->getUnitId()
-            );
-            $output->writeln($formattedLine);
             if($em->persist($monitoring)){
                 $aantal--;
                 echo $monitoring->getId();
-                $output->writeln($aantal);
             }
             $em->flush();
         }
