@@ -3,9 +3,10 @@ homepage:
     defaults: { _controller: AppBundle:Default:index }
 
 create:
-    path:  /create
+    path:  /create/{type}
     defaults: { _controller: AppBundle:Create:index }
 
 test:
     path:  /test
     defaults: { _controller: AppBundle:Create:test }
+

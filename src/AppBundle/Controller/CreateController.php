@@ -34,12 +34,8 @@ class CreateController extends Controller
      * /create?type={events,monitoring,locations,locations}
      * @param Request $request
      */
-    public function indexAction(Request $request)
+    public function indexAction(Request $request, $type)
     {
-        $type = $request->get('type');
-        if(!isset($type)){
-            die('No type given');
-        }
 
         $client = new Client([
             'defaults' => [
@@ -74,8 +70,7 @@ class CreateController extends Controller
 
         $this->backButton();
         echo '<pre>';
-        print_r($result->read(10));
-        print_r($result->getStatusCode());
+        print_r($result->json());
         die('Done');
     }
 
